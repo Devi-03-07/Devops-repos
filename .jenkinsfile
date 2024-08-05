@@ -30,4 +30,16 @@ agent any
                         }
                 }
        }
+       post {
+	success {
+	    echo 'Pipeline completed successfully!'
+	    emailext body: 'Good news! The build was successful. Check console output at ${env.BUILD_URL}.', subject: 'Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}', to: 'edevikalyani@gmail.com'
+	}
+	failure {
+		echo 'Build failed!'
+emailext body: 'Good news! The build was successful. Check console output at ${env.BUILD_URL}.', subject: 'Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}', to: 'edevikalyani@gmail.com'
+	}
+    }
+
+
 }
