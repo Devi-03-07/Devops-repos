@@ -30,9 +30,9 @@ name: SonarCloud analysis
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "javaprojecct1" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "javaproject1" ]
   workflow_dispatch:
 
 permissions:
