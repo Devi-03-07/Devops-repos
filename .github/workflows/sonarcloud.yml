@@ -32,7 +32,7 @@ on:
   push:
     branches: [ "javaprojecct1" ]
   pull_request:
-    branches: [ "javaproject1" ]
+    branches: [ "javaprojecct1" ]
   workflow_dispatch:
 
 permissions:
