@@ -33,7 +33,7 @@ agent any
               stage('SonarCloud Analysis') {
            steps{
             script{
-                // Run SonarCloud analysis
+                
                 def scannerHome = tool name: 'SonarCloud', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     withSonarQubeEnv('SonarQube') {
                 bat """
