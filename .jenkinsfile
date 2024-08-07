@@ -5,11 +5,7 @@ agent any
                         maven 'MAVEN_HOME'
                              
                  }
-              environment {
-        SONARQUBE_SCANNER_HOME = tool 'SonarScanner'
-        SONAR_HOST_URL = 'https://sonarcloud.io' // Replace with your SonarQube server URL
-        SONAR_TOKEN = credentials('1fb7e32b6693e73ae79513ea8d903f3b9548729c') // Replace with your SonarQube token ID
-    }
+            
  
           stages {
                 stage('Stage 1: Hello Clean Stage 1') {
