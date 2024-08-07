@@ -4,6 +4,30 @@ pipeline {
         maven 'MAVEN_HOME'
     }
     stages {
+
+          stage('Gating Conditions') {
+    steps {
+        script {
+            // Example gating conditions
+            def prName = env.CHANGE_ID ? "PR-${env.CHANGE_ID}" : "No PR"
+            def minApprovals = 2 // Set your required minimum approvals
+            def currentApprovals = getCurrentApprovalsFromYourVCS() // Implement this logic
+
+            // Check PR name
+            if (!prName.matches("Devops-repos-PR-\\d+")) { // Adjusted for your repo
+                error "PR name does not meet the required format."
+            }
+
+            // Check for minimum approvals
+            if (currentApprovals < minApprovals) {
+                error "Not enough approvals. Required: ${minApprovals}, Current: ${currentApprovals}."
+            }
+
+            echo "Gating conditions passed."
+        }
+    }
+}
+
         stage('Stage 1: Hello Clean Stage 1') {
             steps {
                 bat 'mvn clean'
