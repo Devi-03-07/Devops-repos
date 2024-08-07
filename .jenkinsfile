@@ -40,7 +40,7 @@ agent any
            steps{
             script{
                 // Run SonarCloud analysis
-                def scannerHome = tool name: 'SonarCloud', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                def scannerHome = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     withSonarQubeEnv('SonarCloud') {
     sh 'sonar-scanner -Dsonar.projectKey=devi-maven_maven-project -Dsonar.sources=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\devopsmultibranch_Javaproject1\\src\\main\\java\\ltts\\com\\controller -Dsonar.organization=devi-maven -Dsonar.login=1fb7e32b6693e73ae79513ea8d903f3b9548729c -Dsonar.java.runtime=none'
 }
