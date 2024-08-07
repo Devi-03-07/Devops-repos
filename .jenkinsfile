@@ -33,7 +33,7 @@ agent any
               stage('SonarCloud Analysis') {
             steps {
                 withSonarQubeEnv('SonarCloud') {
-                    sh 'mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io
+                    sh 'mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io/
        -Dsonar.login=${1fb7e32b6693e73ae79513ea8d903f3b9548729c} -Dsonar.password=${1fb7e32b6693e73ae79513ea8d903f3b9548729c}'
                 }
             }
