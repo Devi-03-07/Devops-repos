@@ -34,10 +34,11 @@ agent any
        post {
 	  success{
             emailext attachLog: true, body: '''Hi,
-                                   The current status of build ${BUILD_STATUS}
+                      The current status of build ${BUILD_STATUS}
  
-                   Thanks''', subject: 'Recend Build Status', to: 'edevikalyani@gmail.com'
+                        Thanks''', subject: 'Recend Build Status', to: 'edevikalyani@gmail.com'
         }
+    }
 	failure {
 		echo 'Build failed!'
 emailext body: 'Good news! The build was successful. Check console output at ${env.BUILD_URL}.', subject: 'Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}', to: 'edevikalyani@gmail.com'
