@@ -34,7 +34,7 @@ agent any
                         }
                 }
              
-    }
+    
 
    stage('SonarCloud Analysis') {
            steps{
@@ -53,6 +53,7 @@ agent any
             }
             }
         }
+}
 
        post {
 	  success{
