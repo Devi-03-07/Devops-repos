@@ -36,6 +36,24 @@ agent any
              
     }
 
+   stage('SonarCloud Analysis') {
+           steps{
+            script{
+                // Run SonarCloud analysis
+                def scannerHome = tool name: 'SonarCloud', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    withSonarQubeEnv('SonarQube') {
+                bat """
+                   C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\SonarCloud\\bin\\sonar-scanner 
+                      -Dsonar.projectKey=devi-maven_maven-project
+                      -Dsonar.sources=src//main//java
+                       -Dsonar.organization=devi-maven
+                      -Dsonar.login=1fb7e32b6693e73ae79513ea8d903f3b9548729c
+                """
+              }
+            }
+            }
+        }
+
        post {
 	  success{
             emailext attachLog: true, body: '''Hi,
