@@ -4,7 +4,7 @@ agent any
                         maven 'MAVEN_HOME'
                  }
           stages {
-                stage('Stage 1: Hello Clean Stage 1') {
+                stage('Stage 1: pre-build') {
                    steps {
                              bat 'mvn clean'
                           }
