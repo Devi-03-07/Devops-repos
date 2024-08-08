@@ -11,7 +11,7 @@ agent any
                 }
                 stage ('Stage 2: Test Stage') { 
                   steps {
-                            bat 'mvn test  jacoco:report''
+                            bat 'mvn test  jacoco:report'
                         }
                 }
                 stage ('Stage 3: My Package') {
