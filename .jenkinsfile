@@ -29,6 +29,23 @@ agent any
                             echo 'Build Success!'
                         }
                 }
+                stage('Check Gate Condition') {
+    when {
+        changeRequest()
+    }
+    steps {
+        script {
+            def coverage = bat(script: 'mvn test jacoco:report', returnStdout: true).trim()
+            def coverageThreshold = 80 // Set your threshold
+ 
+            if (coverage.toInteger() < coverageThreshold) {
+                error("Gate condition not met! Code coverage is below ${coverageThreshold}%.")
+            } else {
+                echo "Gate condition met. Proceeding to deployment..."
+            }
+        }
+    }
+}
        }
        post {
 	  success{
