@@ -11,7 +11,7 @@ agent any
                 }
                 stage ('Stage 2: Test Stage') { 
                   steps {
-                            bat 'mvn test'
+                            bat 'mvn test  jacoco:report''
                         }
                 }
                 stage ('Stage 3: My Package') {
@@ -24,12 +24,7 @@ agent any
                            bat 'mvn install'
                        }
                 }
-                stage('Unit Test and Code Coverage') {
-            steps {
-                echo 'Running unit tests and generating code coverage...'
-                bat 'mvn test jacoco:report'
-            }
-        }
+               
                 stage ('Stage Final: Build Success') {
                   steps {
                             echo 'Build Success!'
