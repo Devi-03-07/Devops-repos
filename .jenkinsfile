@@ -24,6 +24,12 @@ agent any
                            bat 'mvn install'
                        }
                 }
+                stage('Unit Test and Code Coverage') {
+            steps {
+                echo 'Running unit tests and generating code coverage...'
+                bat 'mvn test jacoco:report'
+            }
+        }
                 stage ('Stage Final: Build Success') {
                   steps {
                             echo 'Build Success!'
@@ -34,6 +40,11 @@ agent any
 }
        
        post {
+            always {
+            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+            junit '**/target/surefire-reports/*.xml'
+            jacoco execPattern: '**/target/site/jacoco/*.exec'
+        }
 	  success{
             emailext attachLog: true, body: '''Hi,
                                    The current status of build ${BUILD_STATUS}
