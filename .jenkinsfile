@@ -14,6 +14,24 @@ agent any
                             bat 'mvn test'
                         }
                 }
+                stage('SonarCloud Analysis') {
+           steps{
+            script{
+                // Run SonarCloud analysis
+                def scannerHome = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    withSonarQubeEnv('SonarQube') {
+                bat """
+                    C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\SonarQube\\bin\\sonar-scanner\
+                    -Dsonar.sources=src\\main\\java\
+                    -Dsonar.projectKey=Maven-Project
+                    -Dsonar.branch.name=Javaproject2\
+                
+                    -Dsonar.login=sqb_ba33e45d4b02a239ce8e4ab3e0f5dbd562fe0924
+                """
+            }
+            }
+            }
+        }
                 stage ('Stage 3: My Package') {
                   steps {
                              bat 'mvn package'
@@ -24,6 +42,7 @@ agent any
                            bat 'mvn install'
                        }
                 }
+                
                 stage ('Stage Final: Build Success') {
                   steps {
                             echo 'Build Success!'
