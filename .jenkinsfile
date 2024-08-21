@@ -27,6 +27,7 @@ agent any
                     -Dsonar.branch.name=Javaproject2\
                 
                     -Dsonar.login=sqb_ba33e45d4b02a239ce8e4ab3e0f5dbd562fe0924
+                    sonar.java.binaries= **/*.java
                 """
             }
             }
