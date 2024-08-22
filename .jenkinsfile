@@ -24,6 +24,23 @@ agent any
                            bat 'mvn install'
                        }
                 }
+                  stage('Check for new commit') {
+            steps {
+                script {
+                    // Run the Python script
+                     def hasNewCommit = sh(script: 'python3 commit_checker.py', returnStatus: true)
+                    
+                    if (hasNewCommit == 0) {
+                        echo "New commit detected. Proceeding with the build."
+                        
+                    } else {
+                        echo "No new commit. Skipping the build."
+                        currentBuild.result = 'SUCCESS'
+                        // Optionally, you can exit the pipeline here
+                        return
+                    }
+                }
+            }
               
                
                 stage ('Stage Final: Build Success') {
