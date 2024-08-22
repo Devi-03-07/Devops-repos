@@ -27,7 +27,9 @@ agent any
              stage('Check for new commit') {
                     steps {
                           script {
-                    // Run the Python script
+
+                                 bat 'dir'
+                               // Run the Python script
                                     def hasNewCommit = bat(script: 'python commit_checker.py', returnStatus: true)
 
                     
