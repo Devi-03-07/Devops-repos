@@ -30,7 +30,7 @@ agent any
 
                                  bat 'dir'
                                // Run the Python script
-                                    def hasNewCommit = bat(script: 'python commit_checker.py', returnStatus: true)
+                                    def hasNewCommit = bat(script: 'C:\Users\40039440\AppData\Local\Programs\Python\Python312\python.exe commit_checker.py', returnStatus: true)
 
                     
                                   if (hasNewCommit == 0) {
