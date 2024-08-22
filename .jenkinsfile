@@ -25,22 +25,7 @@ agent any
                        }
                 }
 
-		stage('Static-Code-Analysis') {
-	    steps {
-		script{
-			def scannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-	                    withSonarQubeEnv('SonarQube') {
-	                        bat """
-	                        C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\sonar\\bin\\sonar-scanner\
-	                -Dsonar.projectKey=first-maven_maven-project\
-	                 -Dsonar.sources=src//main//java\
-	                 -Dsonar.organization=first-maven\
-	                 -Dsonar.login=b4c8f95a23bbb86b1ac9104749fc42c967e78af4\
-	                 """
-                    }
-		}
-	    }
-	}
+		
 
 
              stage('Check for new commit') {
