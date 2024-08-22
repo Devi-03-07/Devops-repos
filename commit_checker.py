@@ -5,8 +5,8 @@ COMMIT_FILE = 'last_commit_id.txt'
  
 def get_current_commit_id():
     # Use git command to get the latest commit ID
-result = subprocess.run(['git', 'rev-parse', 'HEAD'], stdout=subprocess.PIPE, check=True)
-    return result.stdout.decode('utf-8').strip()
+ result = subprocess.run(['git', 'rev-parse', 'HEAD'], stdout=subprocess.PIPE, check=True)
+ return result.stdout.decode('utf-8').strip()
  
 def read_last_commit_id():
     try:
