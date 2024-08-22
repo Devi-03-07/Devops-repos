@@ -28,7 +28,8 @@ agent any
                     steps {
                           script {
                     // Run the Python script
-                                     def hasNewCommit = sh(script: 'commit_checker.py', returnStatus: true)
+                                    def hasNewCommit = bat(script: 'python commit_checker.py', returnStatus: true)
+
                     
                                   if (hasNewCommit == 0) {
                                                echo "New commit detected. Proceeding with the build."
