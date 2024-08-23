@@ -24,18 +24,18 @@ agent any
                            bat 'mvn install'
                        }
                 }
-            stage('Check and Update Commit ID') {
-            steps {
-                // Run Python script to check and update commit ID
-                script {
-                    def commitFile = 'stored_commit_id.txt'
+              stage('Check and Update Commit ID') {
+               steps {
+                   // Run Python script to check and update commit ID
+                   script {
+                         def commitFile = 'stored_commit_id.txt'
                     
                     // Ensure commit file exists
-                    if (!fileExists(commitFile)) {
-                        writeFile file: commitFile, text: ''
-                    }
+                         if (!fileExists(commitFile)) {
+                               writeFile file: commitFile, text: ''
+                         }
  
-                    // Run the Python script
+                        // Run the Python script
                           bat 'python commit_checker.py'
                 }
             }
