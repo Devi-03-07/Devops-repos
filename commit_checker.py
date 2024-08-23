@@ -7,7 +7,7 @@ def get_latest_commit_id():
  
     try:
         # Use the specified git path in the command
-result = subprocess.run([git_path, "rev-parse", "HEAD"], stdout=subprocess.PIPE, text=True, check=True)
+        result = subprocess.run([git_path, "rev-parse", "HEAD"], stdout=subprocess.PIPE, text=True, check=True)
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         print(f"Error executing git command: {e}")
