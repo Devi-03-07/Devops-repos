@@ -1,11 +1,11 @@
-
+  
 import subprocess
 import os
  
 def get_latest_commit_id():
     # This command gets the latest commit ID
-result = subprocess.run(["git", "rev-parse", "HEAD"], stdout=subprocess.PIPE, text=True)
-    return result.stdout.strip()
+     result = subprocess.run(["git", "rev-parse", "HEAD"], stdout=subprocess.PIPE, text=True)
+     return result.stdout.strip()
  
 def read_stored_commit_id(file_path):
     if not os.path.exists(file_path):
