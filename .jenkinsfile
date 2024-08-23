@@ -32,9 +32,9 @@ agent any
                     steps {
                           script {
 
-                                 bat 'dir'
+                                 
                                // Run the Python script
-                                    def hasNewCommit = bat(script: 'python commit_checker.py', returnStatus: true)
+                                    def hasNewCommit = bat(script: 'commit_checker.py', returnStatus: true)
 
                     
                                   if (hasNewCommit == 0) {
