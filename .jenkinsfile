@@ -33,6 +33,7 @@ agent any
                 }
        }
        post {
+           
 	  success{
             emailext attachLog: true, body: '''Hi,
                                    The current status of build ${BUILD_STATUS}
